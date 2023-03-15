@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MeetingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('addmeeting',[MeetingController::class,'addAndupdate'])->name('addMeeting');
+Route::post('/deleteMeeting',[MeetingController::class,'DeleteMeeting']);
+Route::get('/Allmeetings',[MeetingController::class,'fetchMeetings']);
+Route::get('/getMeetingEdit',[MeetingController::class,'getMeetingEdit']);
+Route::post('/getMeetingUpdate',[MeetingController::class,'MeetingUpdate']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
